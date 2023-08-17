@@ -1,15 +1,15 @@
 <template>
   <div>
-    <navBar/>
-    <SideBar @open-multi-step-form="openMultiStepForm" />
-    <MainContent :show-multi-step-form="showMultiStepForm" />
+    <NavBar />
+    <SideBar @tab-change="updateActiveTab" />
+    <MainContent :active-tab="activeTab" />
   </div>
 </template>
 
 <script>
 import SideBar from "@/components/SideBar.vue";
 import MainContent from "@/components/MainContent.vue";
-import NavBar from '@/components/NavBar.vue';
+import NavBar from "@/components/NavBar.vue";
 
 export default {
   components: {
@@ -19,12 +19,12 @@ export default {
   },
   data() {
     return {
-      showMultiStepForm: false
+      activeTab: "dashboard" // Set the default active tab to "dashboard"
     };
   },
   methods: {
-    openMultiStepForm() {
-      this.showMultiStepForm = true;
+    updateActiveTab(tabName) {
+      this.activeTab = tabName;
     }
   }
 };

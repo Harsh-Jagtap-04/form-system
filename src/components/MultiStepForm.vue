@@ -194,6 +194,7 @@
 
 <script>
 export default {
+  name: 'MultiStepForm',
   data() {
     return {
       currentStep: 1

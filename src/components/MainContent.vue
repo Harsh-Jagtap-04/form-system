@@ -1,7 +1,8 @@
 <template>
   <div class="main-content">
-    <MultiStepForm v-if="showMultiStepForm" />
-    <div v-else-if="showDefaultContent">
+    <MultiStepForm v-if="activeTab === 'apply_scheme'" />
+    <DashboardPage v-else-if="activeTab === 'dashboard'" />
+    <div v-else>
       <h1>Welcome to the Main Content</h1>
       <p>This is where your main content goes.</p>
     </div>
@@ -10,15 +11,17 @@
 
 <script>
 import MultiStepForm from "@/components/MultiStepForm.vue";
+import DashboardPage from "@/components/DashboardPage.vue";
 
 export default {
   components: {
-    MultiStepForm
+    MultiStepForm,
+    DashboardPage
   },
   props: {
-    showMultiStepForm: Boolean
-  },
-  // Other properties and methods
+    showMultiStepForm: Boolean,
+    activeTab: String
+  }
 };
 </script>
 
@@ -28,7 +31,7 @@ export default {
   padding: 40px;
   background-color: #ffffff;
   box-shadow: 0 0 2px var(--grey-color-light);
-  margin-top: 30px; /* Adjust this margin to prevent content from overlapping with the navbar */
-  margin-left: 260px; /* Add margin to the left to account for the sidebar width */
+  margin-top: 30px;
+  margin-left: 260px;
 }
 </style>
