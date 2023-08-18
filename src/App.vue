@@ -3,6 +3,7 @@
     <NavBar />
     <SideBar @tab-change="updateActiveTab" />
     <MainContent :active-tab="activeTab" />
+
   </div>
 </template>
 

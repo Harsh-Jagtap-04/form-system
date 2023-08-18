@@ -11,7 +11,6 @@
               <span>1</span>
             </span>
             <div class="label">Letter - A</div>           
-
           </a>
         </li>
         <!-- Step 2 -->
@@ -43,56 +42,64 @@
       >
         <!-- Step 1 Content -->
         <section id="step-1" class="form-step" :class="{ 'd-none': currentStep !== 1 }">
-          <h2 class="font-normal">Account Basic Details</h2>
+          <h2 class="font-normal">User Basic Details</h2>
           <!-- Step 1 input fields -->
           
           <div class="mt-3">
             <div class="form-row">
     <div class="form-group col">
-      <label class="full-name-label" for="first-name">First Name</label>
+      <label class="full-name-label" for="first-name">First Name/प्रथम नाव
+</label>
       <input type="text" id="first-name" class="form-control" />
     </div>
     <div class="form-group col">
-      <label class="full-name-label" for="middle-name">Middle Name</label>
+      <label class="full-name-label" for="middle-name">Middle Name/वडिलांचे नाव
+</label>
       <input type="text" id="middle-name" class="form-control" />
     </div>
     <div class="form-group col">
-      <label class="full-name-label" for="last-name">Last Name</label>
+      <label class="full-name-label" for="last-name">Last Name/आडनाव</label>
       <input type="text" id="last-name" class="form-control" />
     </div>
   </div>
-  <div class="form-row">
+  
     <div class="form-group col">
-      <label class="full-name-label" for="residing-at">Residing At</label>
-      <input type="text" id="residing-at" class="form-control" />
+      <label class="full-name-label" for="residing-at">Residing At/राहणार</label>
+      <!-- <input type="text" id="residing-at" class="form-control" /> -->
+      <textarea id="residing-at" class="form-control"></textarea>
     </div>
+    <div class="form-row">
     <div class="form-group col">
-      <label class="full-name-label" for="taluka">Taluka</label>
+      <label class="full-name-label" for="taluka">Taluka/तालुका</label>
       <input type="text" id="taluka" class="form-control" />
     </div>
     <div class="form-group col">
-      <label class="full-name-label" for="district">District</label>
+      <label class="full-name-label" for="district">District/जिल्हा</label>
       <input type="text" id="district" class="form-control" />
     </div>
   </div>
-  </div>
-  <div class="mt-3">
-    <div class="form-group">
-      <label class="full-name-label" for="poverty-line">Number of Poverty Line</label>
+<!-- </div> -->
+<div class="form-row">
+  <!-- <div class="mt-3"> -->
+    <div class="form-group col">
+      <label class="full-name-label" for="poverty-line">BPL Number/दारिद्र्य रेषेखालील क्रमांक</label>
       <input type="number" id="poverty-line" class="form-control" />
     </div>
-    <div class="form-group">
-      <label class="full-name-label" for="group-number">Group Number</label>
+    <div class="form-group col">
+      <label class="full-name-label" for="group-number">Group Number/गट क्रमांक</label>
       <input type="number" id="group-number" class="form-control" />
     </div>
+  </div>
+  </div>
     <div class="form-group">
-      <label class="full-name-label"  for="total-land">Total Land</label>
+      <label class="full-name-label"  for="total-land">Total Land/धारण केलेले एकुण क्षेत्र(आर)
+</label>
       <input type="number" id="total-land" class="form-control" />
     </div>
-  </div>
+  <!-- </div> -->
   <div class="mt-3">
     <div class="form-group">
-      <label class="full-name-label" for="category">Category of Applicant</label>
+      <label class="full-name-label" for="category">Category of Applicant/अर्जदाराचा संवर्ग</label>
       <select id="category" class="form-control">
         <option value="category-1">Category 1</option>
         <option value="category-2">Category 2</option>
@@ -104,12 +111,25 @@
       <input type="text" id="categorized" class="form-control" />
     </div>
     <div class="form-group">
-      <label class="full-name-label" for="irrigation-facility">Irrigation Facility</label>
+      <label class="full-name-label" for="irrigation-facility">Irrigation Facility/उपलब्ध असलेली सिंचन सुविधा
+</label>
       <input type="text" id="irrigation-facility" class="form-control" />
     </div>
   </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <label class="full-name-label" for="form-Number">Form Number/प्राप्त अर्जाचा क्रमांक
+</label>
+      <input type="text" id="form-Number" class="form-control" />
+    </div>
+    <div class="form-group col">
+      <label for="year">Year/वर्ष</label>
+  <input type="number" id="year" class="form-control" min="1900" max="2099" step="1" value="2023"/>
+
+    </div>
+  </div>
   <div class="mt-3">
-    <button class="button btn-navigate-form-step" type="button" @click="navigateToStep(2)">Next</button>
+    <button class="button btn-navigate-form-step" type="button" @click="navigateToStep(2)">Save and Next</button>
   </div>
 
         </section>
@@ -120,19 +140,19 @@
             <!-- File Uploads -->
   <div class="mt-3">
     <div class="form-group">
-      <label class="full-name-label" for="extract-7-12">Online Extract of 7/12</label>
+      <label class="full-name-label" for="extract-7-12">Online Transcript of 7/12 / ७/१२ चा ऑनलाईन उतारा</label>
       <input type="file" id="extract-7-12" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
     </div>
     <div class="form-group">
-      <label class="full-name-label" for="form-8a">Online Extract of Form 8A</label>
+      <label class="full-name-label" for="form-8a">Online Transcript of Form 8A</label>
       <input type="file" id="form-8a" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
     </div>
     <div class="form-group">
-      <label class="full-name-label" for="job-card">Job Card Copy</label>
+      <label class="full-name-label" for="job-card">Copy of Job Card/ जॉबकार्ड ची प्रत</label>
       <input type="file" id="job-card" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
     </div>
     <div class="form-group">
-      <label class="full-name-label" for="additional-land-affidavit">Additional Land Ownership Affidavit</label>
+      <label class="full-name-label" for="additional-land-affidavit">Additional Land Ownership Affidavit/</label>
       <input type="file" id="additional-land-affidavit" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
     </div>
     <div class="form-group">
@@ -142,7 +162,7 @@
   </div>
           <div class="mt-3 d-flex justify-content-between">
     <button class="button btn-navigate-form-step" type="button" @click="navigateToStep(1)">Prev</button>
-    <button class="button btn-navigate-form-step" type="button" @click="navigateToStep(3)">Next</button>
+    <button class="button btn-navigate-form-step" type="button" @click="navigateToStep(3)">Save and Next</button>
   </div>
 
   </section>
@@ -154,23 +174,24 @@
   <!-- Personal Details Inputs -->
   <div class="mt-3">
     <div class="form-group">
-      <label for="aadhar-number">Aadhar Number</label>
+      <label for="aadhar-number">Aadhar Number/आधार कार्ड नंबर
+</label>
       <input type="text" id="aadhar-number" class="form-control" />
     </div>
     <div class="form-group">
-      <label for="mobile-number">Mobile Number</label>
+      <label for="mobile-number">Mobile Number/मोबाईल नंबर</label>
       <input type="text" id="mobile-number" class="form-control" />
     </div>
     <div class="form-group">
-      <label for="witness-1">Witness 1</label>
+      <label for="witness-1">Witness 1/साक्षीदार 1</label>
       <div class="witness-name-inputs">
-        <input type="text" id="witness-1-names" class="form-control" placeholder="First Name, Middle Name, Last Name" />
+        <input type="text" id="witness-1-names" class="form-control" placeholder="Enter your full Name " />
       </div>
     </div>
     <div class="form-group">
-      <label for="witness-2">Witness 2</label>
+      <label for="witness-2">Witness 2/साक्षीदार 2</label>
       <div class="witness-name-inputs">
-        <input type="text" id="witness-2-names" class="form-control" placeholder="First Name, Middle Name, Last Name" />
+        <input type="text" id="witness-2-names" class="form-control" placeholder="Enter your full Name" />
       </div>
     </div>
   </div>
@@ -194,7 +215,6 @@
 
 <script>
 export default {
-  name: 'MultiStepForm',
   data() {
     return {
       currentStep: 1
@@ -216,6 +236,7 @@ export default {
 .d-flex {
   display: flex;
   align-items: center;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
 /* Align buttons to opposite sides */
@@ -227,21 +248,21 @@ export default {
   justify-content: space-between;
   margin-bottom: 1rem;
 }
-/*
+
 .form-group {
   flex: 1;
   margin-right: 1rem;
 }
-*/
+
 .form-group {
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   margin-bottom: 1rem; /* Add some vertical spacing */
 }
 
 
 .full-name-label {
-  display: inline-block;
+  display: flex;
   width: 50%; /* Adjust the width as needed */
   vertical-align: middle;
 }
@@ -255,6 +276,7 @@ export default {
 /* Optional: Adjust form field widths if needed */
 .form-control {
   width: 100%;
+  font-size: 20px;
 }
 
 
@@ -266,6 +288,12 @@ h2 {
 }
 #multi-step-form-container {
     margin-top: 5rem;
+}
+.form-container {
+  background-color: #f9f8fd;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 .text-center {
     text-align: center;
@@ -304,7 +332,7 @@ h2 {
     font-weight: normal;
 }
 ul.form-stepper {
-    counter-reset: section;
+    counter-reset: inherit;
     margin-bottom: 3rem;
 }
 ul.form-stepper .form-stepper-circle {
@@ -414,4 +442,8 @@ ul.form-stepper li a .form-stepper-circle {
 .form-stepper a {
     cursor: default;
 }
+.form-stepper-active .form-stepper-circle {
+  background-color: #3b2273 !important;
+}
+
 </style>

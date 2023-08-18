@@ -2,6 +2,14 @@
   <div class="main-content">
     <MultiStepForm v-if="activeTab === 'apply_scheme'" />
     <DashboardPage v-else-if="activeTab === 'dashboard'" />
+    <SchemeTable v-else-if="activeTab === 'schemes'"/>
+    <ApplicationPage
+      v-else-if="activeTab === 'applications'"
+      @update:activeTab="updateActiveTab"
+    />
+    <EditFormPage v-else-if="activeTab === 'edit_form'" />
+
+    
     <div v-else>
       <h1>Welcome to the Main Content</h1>
       <p>This is where your main content goes.</p>
@@ -12,16 +20,27 @@
 <script>
 import MultiStepForm from "@/components/MultiStepForm.vue";
 import DashboardPage from "@/components/DashboardPage.vue";
+import SchemeTable from "@/components/SchemeTable.vue";
+import ApplicationPage from "@/components/ApplicationPage.vue";
+import EditFormPage from "@/components/EditFormPage.vue";
 
 export default {
   components: {
     MultiStepForm,
-    DashboardPage
+    DashboardPage,
+    SchemeTable,
+    ApplicationPage,
+    EditFormPage
   },
   props: {
     showMultiStepForm: Boolean,
     activeTab: String
-  }
+  },
+  methods: {
+    updateActiveTab(tabName) {
+      this.$emit('update:activeTab', tabName); // Forward the event to App.vue
+    },
+  },
 };
 </script>
 
