@@ -1,8 +1,8 @@
 <template>
   <div>
     <NavBar />
-    <SideBar @tab-change="updateActiveTab" />
-    <MainContent :active-tab="activeTab" />
+    <SideBar :active-tab="activeTab" @tab-change="updateActiveTab" />
+    <MainContent :active-tab="activeTab" @update:activeTab="updateActiveTab" />
 
   </div>
 </template>

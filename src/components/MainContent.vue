@@ -1,7 +1,10 @@
 <template>
   <div class="main-content">
+
     <MultiStepForm v-if="activeTab === 'apply_scheme'" />
-    <DashboardPage v-else-if="activeTab === 'dashboard'" />
+
+    <DashboardPage v-else-if="activeTab === 'dashboard'"  @select-option="selectOption" />
+
     <SchemeTable v-else-if="activeTab === 'schemes'"/>
     <ApplicationPage
       v-else-if="activeTab === 'applications'"
@@ -9,11 +12,9 @@
     />
     <EditFormPage v-else-if="activeTab === 'edit_form'" />
 
+    <AdministrationPage v-else-if="activeTab === 'administration'"  @select-option="selectOption" />
+
     
-    <div v-else>
-      <h1>Welcome to the Main Content</h1>
-      <p>This is where your main content goes.</p>
-    </div>
   </div>
 </template>
 
@@ -23,6 +24,8 @@ import DashboardPage from "@/components/DashboardPage.vue";
 import SchemeTable from "@/components/SchemeTable.vue";
 import ApplicationPage from "@/components/ApplicationPage.vue";
 import EditFormPage from "@/components/EditFormPage.vue";
+import AdministrationPage from "@/components/AdministrationPage.vue";
+
 
 export default {
   components: {
@@ -30,15 +33,23 @@ export default {
     DashboardPage,
     SchemeTable,
     ApplicationPage,
-    EditFormPage
+    EditFormPage,
+    AdministrationPage
   },
   props: {
-    showMultiStepForm: Boolean,
     activeTab: String
+  },
+  data() {
+    return {
+      selectedOption: null
+    };
   },
   methods: {
     updateActiveTab(tabName) {
       this.$emit('update:activeTab', tabName); // Forward the event to App.vue
+    },
+    selectOption(option) {
+      this.selectedOption = option;
     },
   },
 };

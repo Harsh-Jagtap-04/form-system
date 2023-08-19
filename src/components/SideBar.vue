@@ -38,6 +38,14 @@
             <span class="navlink center-text">Application Forms</span>
           </a>
         </li>
+        <li class="item">
+          <a href="#administration" class="nav_link submenu_item with-border" @click.prevent="openMultiStepForm('administration')" :class="{ active: activeTab === 'administration' }">
+            <span class="navlink_icon">
+              <i class="bx bx-file"></i>
+            </span>
+            <span class="navlink center-text">Administration</span>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -46,6 +54,9 @@
 
 <script>
 export default {
+  props: {
+    activeTab: String // Add the activeTab prop here
+  },
   methods: {
     openMultiStepForm(tabName) {
       this.$emit('tab-change', tabName);
