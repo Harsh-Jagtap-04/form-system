@@ -2,7 +2,7 @@
     <div class="form-container">
       <div id="multi-step-form-container" class="mt-5">
         <!-- Form Steps / Progress Bar -->
-  
+
         <!-- Step Wise Form Content -->
         <form
           id="userRegistrationForm"
@@ -57,11 +57,15 @@
             </div>
   
             <div class="button-container">
+              <button class="button go-back-btn" @click="goBack">Go Back</button>
               <button class="button submit-btn" type="submit">Submit</button>
             </div>
           </section>
         </form>
       </div>
+
+ 
+
     </div>
   </template>
   
@@ -81,6 +85,9 @@
       navigateToStep(stepNumber) {
         this.currentStep = stepNumber;
       },
+      goBack() {
+      this.$emit('go-back');
+    },
       submitForm() {
         // Handle form submission
       }
@@ -91,6 +98,7 @@
 
   
   <style scoped>
+
   .form-check {
   display: flex;
   align-items: center;

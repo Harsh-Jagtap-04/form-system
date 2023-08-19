@@ -18,9 +18,11 @@
         </div>
         <!-- Add more blocks for other options -->
       </div>
+
       <div v-else>
-        <component :is="selectedOptionComponent" />
-      </div>
+      <component :is="selectedOptionComponent" @go-back="goBackFromChild" />
+    </div>
+
     </div>
   </template>
   
@@ -58,13 +60,17 @@
     },
     methods: {
       selectOption(option) {
-        this.selectedOption = option;
-      }
+      this.selectedOption = option;
+    },
+    goBackFromChild() {
+      this.selectedOption = null;
+    }
     }
   };
   </script>
   
   <style scoped>
+
   .dashboard {
     padding: 40px;
     background-color: #ffffff;
