@@ -11,12 +11,14 @@
           <th>Department</th>
           -->
           <th>GR (pdf)</th>
+          <th>Apply for Scheme</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(scheme, index) in schemes" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ scheme.name }}</td>
+          
           <!--
           <td>{{ scheme.category }}</td>
           <td>{{ scheme.department }}</td>
@@ -31,6 +33,7 @@
               -->
             </div>
           </td>
+          <td> <button class="button btn-pdf" @click="selectOption('apply_scheme')" >Apply</button></td>
         </tr>
       </tbody>
     </table>
@@ -38,23 +41,28 @@
 </template>
 
 <script>
+
+import MultiStepForm from "@/components/MultiStepForm.vue";
+
 export default {
+  name:"SchemeTable",
+  components: {
+    MultiStepForm,
+  },
   data() {
     return {
       schemes: [
         {
           name: "Irrigation-well",
-          /*
-          category: "Category A",
-          department: "Department X",
-          */
           pdfPath: "/assets/pdf/Irrigation-well-GR.pdf", // Update the path here
         },
         // Add more schemes here
       ],
+      selectedOption: null,
       pdfVisible: -1,
     };
   },
+
   methods: {
     openPDF(index) {
       this.pdfVisible = index;
