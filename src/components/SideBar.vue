@@ -11,6 +11,15 @@
             <span class="navlink center-text">Dashboard</span>
           </a>
         </li>
+                <!-- Menu item 3: Schemes -->
+                <li class="item">
+          <a href="#schemes" class="nav_link submenu_item with-border" @click.prevent="openMultiStepForm('schemes')" :class="{ active: activeTab === 'schemes' }">
+            <span class="navlink_icon">
+              <i class="bx bx-list-ul"></i>
+            </span>
+            <span class="navlink center-text">Schemes</span>
+          </a>
+        </li>
         <!-- Menu item 2: Apply For Scheme -->
         <li class="item">
           <a href="#apply_scheme" class="nav_link submenu_item with-border" @click.prevent="openMultiStepForm('apply_scheme')" :class="{ active: activeTab === 'apply_scheme' }">
@@ -20,22 +29,14 @@
             <span class="navlink center-text">Apply For Scheme</span>
           </a>
         </li>
-        <!-- Menu item 3: Schemes -->
-        <li class="item">
-          <a href="#schemes" class="nav_link submenu_item with-border" @click.prevent="openMultiStepForm('schemes')" :class="{ active: activeTab === 'schemes' }">
-            <span class="navlink_icon">
-              <i class="bx bx-list-ul"></i>
-            </span>
-            <span class="navlink center-text">Schemes</span>
-          </a>
-        </li>
+
         <!-- Menu item 4: Applications -->
         <li class="item">
           <a href="#applications" class="nav_link submenu_item with-border" @click.prevent="openMultiStepForm('applications')" :class="{ active: activeTab === 'applications' }">
             <span class="navlink_icon">
               <i class="bx bx-file"></i>
             </span>
-            <span class="navlink center-text">Application Forms</span>
+            <span class="navlink center-text">Submitted Forms</span>
           </a>
         </li>
         <li class="item">

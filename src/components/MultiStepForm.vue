@@ -34,11 +34,11 @@
       </ul>
       <!-- Step Wise Form Content -->
       <form
-        id="userAccountSetupForm"
-        name="userAccountSetupForm"
-        enctype="multipart/form-data"
-        method="POST"
-        @submit.prevent="submitForm"
+      id="userAccountSetupForm"
+      name="userAccountSetupForm"
+      enctype="multipart/form-data"
+      method="POST"
+      @submit.prevent="submitForm"
       >
         <!-- Step 1 Content -->
         <section id="step-1" class="form-step" :class="{ 'd-none': currentStep !== 1 }">
@@ -50,32 +50,32 @@
     <div class="form-group col">
       <label class="full-name-label" for="first-name">First Name/प्रथम नाव
 </label>
-      <input type="text" id="first-name" class="form-control" />
+      <input type="text" id="ncharFirstName" class="form-control"  v-model="formData.ncharFirstName"/>
     </div>
     <div class="form-group col">
       <label class="full-name-label" for="middle-name">Middle Name/वडिलांचे नाव
 </label>
-      <input type="text" id="middle-name" class="form-control" />
+      <input type="text" id="ncharMiddleName" class="form-control" v-model="formData.ncharMiddleName"/>
     </div>
     <div class="form-group col">
       <label class="full-name-label" for="last-name">Last Name/आडनाव</label>
-      <input type="text" id="last-name" class="form-control" />
+      <input type="text" id="ncharLastName" class="form-control" v-model="formData.ncharLastName"/>
     </div>
   </div>
   
     <div class="form-group col">
       <label class="full-name-label" for="residing-at">Residing At/राहणार</label>
       <!-- <input type="text" id="residing-at" class="form-control" /> -->
-      <textarea id="residing-at" class="form-control"></textarea>
+      <textarea id="ncharResidingAt" class="form-control" v-model="formData.ncharResidingAt"></textarea>
     </div>
     <div class="form-row">
     <div class="form-group col">
       <label class="full-name-label" for="taluka">Taluka/तालुका</label>
-      <input type="text" id="taluka" class="form-control" />
+      <input type="text" id="ncharTaluka" class="form-control" v-model="formData.ncharTaluka"/>
     </div>
     <div class="form-group col">
       <label class="full-name-label" for="district">District/जिल्हा</label>
-      <input type="text" id="district" class="form-control" />
+      <input type="text" id="ncharDistrict" class="form-control" v-model="formData.ncharDistrict" />
     </div>
   </div>
 <!-- </div> -->
@@ -83,24 +83,24 @@
   <!-- <div class="mt-3"> -->
     <div class="form-group col">
       <label class="full-name-label" for="poverty-line">BPL Number/दारिद्र्य रेषेखालील क्रमांक</label>
-      <input type="number" id="poverty-line" class="form-control" />
+      <input type="number" id="intBPLNumber" class="form-control" v-model="formData.intBPLNumber"/>
     </div>
     <div class="form-group col">
       <label class="full-name-label" for="group-number">Group Number/गट क्रमांक</label>
-      <input type="number" id="group-number" class="form-control" />
+      <input type="number" id="intGroupNumber" class="form-control" v-model="formData.intGroupNumber" />
     </div>
   </div>
   </div>
     <div class="form-group">
       <label class="full-name-label"  for="total-land">Total Land/धारण केलेले एकुण क्षेत्र(आर)
 </label>
-      <input type="number" id="total-land" class="form-control" />
+      <input type="number" id="floatTotalLand" class="form-control" v-model="formData.floatTotalLand"/>
     </div>
   <!-- </div> -->
   <div class="mt-3">
     <div class="form-group">
       <label class="full-name-label" for="category">Category of Applicant/अर्जदाराचा संवर्ग</label>
-      <select id="category" class="form-control">
+      <select id="ncharCategory" class="form-control" v-model="formData.ncharCategory">
         <option value="category-1">Category 1</option>
         <option value="category-2">Category 2</option>
         <option value="category-3">Category 3</option>
@@ -108,23 +108,23 @@
     </div>
     <div class="form-group">
       <label class="full-name-label" for="categorized">Categorized</label>
-      <input type="text" id="categorized" class="form-control" />
+      <input type="text" id="ncharCategorized" class="form-control" v-model="formData.ncharCategorized"/>
     </div>
     <div class="form-group">
       <label class="full-name-label" for="irrigation-facility">Irrigation Facility/उपलब्ध असलेली सिंचन सुविधा
 </label>
-      <input type="text" id="irrigation-facility" class="form-control" />
+      <input type="text" id="ncharIrrigationFacility" class="form-control" v-model="formData.ncharIrrigationFacility"/>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col">
       <label class="full-name-label" for="form-Number">Form Number/प्राप्त अर्जाचा क्रमांक
 </label>
-      <input type="text" id="form-Number" class="form-control" />
+      <input type="text" id="ncharFormNumber" class="form-control" v-model="formData.ncharFormNumber" />
     </div>
     <div class="form-group col">
       <label for="year">Year/वर्ष</label>
-  <input type="number" id="year" class="form-control" min="1900" max="2099" step="1" value="2023"/>
+  <input type="number" id="intYear" class="form-control" min="1900" max="2099" step="1"  v-model="formData.intYear"/>
 
     </div>
   </div>
@@ -141,23 +141,23 @@
   <div class="mt-3">
     <div class="form-group">
       <label class="full-name-label" for="extract-7-12">Online Transcript of 7/12 / ७/१२ चा ऑनलाईन उतारा</label>
-      <input type="file" id="extract-7-12" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
+      <input type="file" id="blobExtract712" accept=".pdf, .jpg, .jpeg, .png" class="form-control"  />
     </div>
     <div class="form-group">
       <label class="full-name-label" for="form-8a">Online Transcript of Form 8A</label>
-      <input type="file" id="form-8a" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
+      <input type="file" id="blobForm8A" accept=".pdf, .jpg, .jpeg, .png" class="form-control"  />
     </div>
     <div class="form-group">
       <label class="full-name-label" for="job-card">Copy of Job Card/ जॉबकार्ड ची प्रत</label>
-      <input type="file" id="job-card" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
+      <input type="file" id="blobJobCard" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
     </div>
     <div class="form-group">
       <label class="full-name-label" for="additional-land-affidavit">Additional Land Ownership Affidavit/</label>
-      <input type="file" id="additional-land-affidavit" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
+      <input type="file" id="blobAdditionalLandAffidavit" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
     </div>
     <div class="form-group">
       <label class="full-name-label" for="water-usage-agreement">Water Usage Agreement</label>
-      <input type="file" id="water-usage-agreement" accept=".pdf, .jpg, .jpeg, .png" class="form-control" />
+      <input type="file" id="blobWaterUsageAgreement" accept=".pdf, .jpg, .jpeg, .png" class="form-control"  />
     </div>
   </div>
           <div class="mt-3 d-flex justify-content-between">
@@ -176,22 +176,22 @@
     <div class="form-group">
       <label for="aadhar-number">Aadhar Number/आधार कार्ड नंबर
 </label>
-      <input type="text" id="aadhar-number" class="form-control" />
+      <input type="text" id="ncharAadharNumber" class="form-control" v-model="formData.ncharAadharNumber" />
     </div>
     <div class="form-group">
       <label for="mobile-number">Mobile Number/मोबाईल नंबर</label>
-      <input type="text" id="mobile-number" class="form-control" />
+      <input type="text" id="ncharMobileNumber" class="form-control" v-model="formData.ncharMobileNumber" />
     </div>
     <div class="form-group">
       <label for="witness-1">Witness 1/साक्षीदार 1</label>
       <div class="witness-name-inputs">
-        <input type="text" id="witness-1-names" class="form-control" placeholder="Enter your full Name " />
+        <input type="text" id="ncharWitness1" class="form-control" placeholder="Enter your full Name " v-model="formData.ncharWitness1"/>
       </div>
     </div>
     <div class="form-group">
       <label for="witness-2">Witness 2/साक्षीदार 2</label>
       <div class="witness-name-inputs">
-        <input type="text" id="witness-2-names" class="form-control" placeholder="Enter your full Name" />
+        <input type="text" id="ncharWitness2" class="form-control" placeholder="Enter your full Name"  v-model="formData.ncharWitness2"/>
       </div>
     </div>
   </div>
@@ -214,18 +214,118 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      currentStep: 1
+      currentStep: 1,
+      formData: {
+        ncharFirstName: '',
+        ncharMiddleName: '',
+        ncharLastName: '',
+        ncharResidingAt: '',
+        ncharTaluka: '',
+        ncharDistrict: '',
+        intBPLNumber: null,
+        intGroupNumber: null,
+        floatTotalLand: null,
+        ncharCategory: '',
+        ncharCategorized: '',
+        ncharIrrigationFacility: '',
+        ncharFormNumber: '',
+        intYear: null,
+        ncharAadharNumber: '',
+        ncharMobileNumber: '',
+        ncharWitness1: '',
+        ncharWitness2: '',
+        // Add fields for documents
+        blobExtract712: null,
+        blobForm8A: null,
+        blobJobCard: null,
+        blobAdditionalLandAffidavit: null,
+        blobWaterUsageAgreement: null
+      }
     };
   },
   methods: {
     navigateToStep(stepNumber) {
       this.currentStep = stepNumber;
     },
+
     submitForm() {
-      // Handle form submission
+    const jsonData = {
+      ncharFirstName: this.formData.ncharFirstName,
+      ncharMiddleName: this.formData.ncharMiddleName,
+      ncharLastName: this.formData.ncharLastName,
+      ncharResidingAt: this.formData.ncharResidingAt,
+      ncharTaluka: this.formData.ncharTaluka,
+      ncharDistrict: this.formData.ncharDistrict,
+      intBPLNumber: this.formData.intBPLNumber,
+      intGroupNumber: this.formData.intGroupNumber,
+      floatTotalLand: this.formData.floatTotalLand,
+      ncharCategory: this.formData.ncharCategory,
+      ncharCategorized: this.formData.ncharCategorized,
+      ncharIrrigationFacility: this.formData.ncharIrrigationFacility,
+      ncharFormNumber: this.formData.ncharFormNumber,
+      intYear: this.formData.intYear,
+      ncharAadharNumber: this.formData.ncharAadharNumber,
+      ncharMobileNumber: this.formData.ncharMobileNumber,
+      ncharWitness1: this.formData.ncharWitness1,
+      ncharWitness2: this.formData.ncharWitness2,
+
+      blobExtract712: this.formData.blobExtract712,
+        blobForm8A: this.formData.blobForm8A,
+        blobJobCard: this.formData.blobJobCard,
+        blobAdditionalLandAffidavit: this.formData.blobAdditionalLandAffidavit,
+        blobWaterUsageAgreement: this.formData.blobWaterUsageAgreement
+
+    };
+
+    axios
+      .post('http://localhost:5555/saveApplication', jsonData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+          console.log('Application saved:', response.data);
+
+      // Clear form fields
+        this.formData.ncharFirstName = '';
+        this.formData.ncharMiddleName = '';
+        this.formData.ncharLastName = '';
+        this.formData.ncharResidingAt = '';
+        this.formData.ncharTaluka = '';
+        this.formData.ncharDistrict = '';
+        this.formData.intBPLNumber = null;
+        this.formData.intGroupNumber = null;
+        this.formData.floatTotalLand = null;
+        this.formData.ncharCategory = '';
+        this.formData.ncharCategorized = '';
+        this.formData.ncharIrrigationFacility = '';
+        this.formData.ncharFormNumber = '';
+        this.formData.intYear = null;
+        this.formData.ncharAadharNumber = '';
+        this.formData.ncharMobileNumber = '';
+        this.formData.ncharWitness1 = '';
+        this.formData.ncharWitness2 = '';
+        this.formData.blobExtract712 = null;
+        this.formData.blobForm8A = null;
+        this.formData.blobJobCard = null;
+        this.formData.blobAdditionalLandAffidavit = null;
+        this.formData.blobWaterUsageAgreement = null;
+          // Reset step to 1
+          this.currentStep = 1;
+
+          // Show success message
+          alert('Application submitted successfully');
+
+        })
+        .catch(error => {
+          console.error('Error saving application:', error);
+          // Handle error scenario, maybe show an error message
+        });
     }
   }
 };

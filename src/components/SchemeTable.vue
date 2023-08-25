@@ -42,12 +42,11 @@
 
 <script>
 
-import MultiStepForm from "@/components/MultiStepForm.vue";
 
 export default {
   name:"SchemeTable",
   components: {
-    MultiStepForm,
+    
   },
   data() {
     return {

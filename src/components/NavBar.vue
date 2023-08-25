@@ -5,7 +5,7 @@
 <!--
       <img src="" alt="" />
 -->
-      <span> </span> 
+      <span></span> 
     </div>
 <!--
     <div class="search_bar">
@@ -38,6 +38,11 @@ export default {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+.content {
+  /* Set a higher z-index value */
+  z-index: 2;
+}
 :root {
   --white-color: #fff;
   --blue-color: #4070f4;
@@ -68,7 +73,8 @@ body.dark {
   align-items: center;
   justify-content: space-between;
   padding: 15px 30px;
-  z-index: 1000;
+  /* Remove or set a lower z-index value */
+  z-index: 1;
   box-shadow: 0 0 2px var(--grey-color-light);
 }
 .logo_item {
