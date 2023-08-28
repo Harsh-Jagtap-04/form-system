@@ -141,7 +141,7 @@
   <div class="mt-3">
     <div class="form-group">
       <label class="full-name-label" for="extract-7-12">Online Transcript of 7/12 / ७/१२ चा ऑनलाईन उतारा</label>
-      <input type="file" id="blobExtract712" accept=".pdf, .jpg, .jpeg, .png" class="form-control"  />
+      <input type="file" id="blobExtract712" accept=".pdf, .jpg, .jpeg, .png" class="form-control"  v-on="formData.blobExtract712"/>
     </div>
     <div class="form-group">
       <label class="full-name-label" for="form-8a">Online Transcript of Form 8A</label>
@@ -205,6 +205,7 @@
       <button class="button submit-btn" type="submit">Save</button>
     </div>
   </div>
+
 </section>
 
 
@@ -247,6 +248,9 @@ export default {
         blobWaterUsageAgreement: null
       }
     };
+  },
+  props: {
+    selectedOption: String // Add this line
   },
   methods: {
     navigateToStep(stepNumber) {

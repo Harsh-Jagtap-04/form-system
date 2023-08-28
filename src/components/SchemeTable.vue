@@ -6,10 +6,7 @@
         <tr>
           <th>No.</th>
           <th>Scheme Name</th>
-          <!--
-          <th>Category</th>
-          <th>Department</th>
-          -->
+
           <th>GR (pdf)</th>
           <th>Apply for Scheme</th>
         </tr>
@@ -18,36 +15,33 @@
         <tr v-for="(scheme, index) in schemes" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ scheme.name }}</td>
-          
-          <!--
-          <td>{{ scheme.category }}</td>
-          <td>{{ scheme.department }}</td>
-          -->
           <td>
             <button class="button btn-pdf" @click="openPDF(index)">Open PDF</button>
             <div v-if="pdfVisible === index" class="pdf-popup">
               <button class="btn-close" @click="closePDF">Close</button>
               <object :data="scheme.pdfPath" type="application/pdf" class="pdf-frame"></object>
-              <!--
-              <button class="btn-print" @click="printPDF">Print</button>
-              -->
             </div>
           </td>
-          <td> <button class="button btn-pdf" @click="selectOption('apply_scheme')" >Apply</button></td>
+          <td> 
+           <button class="button btn-pdf" @click.prevent="openMultiStepForm('apply_scheme')">Apply</button>
+        </td>
         </tr>
       </tbody>
     </table>
   </div>
+  <div v-if="showMultiStepForm">
+      <MultiStepForm :selected-option="selectedOption" />
+    </div>
 </template>
 
 <script>
-
+import MultiStepForm from "@/components/MultiStepForm.vue"; // Adjust the path accordingly
 
 export default {
   name:"SchemeTable",
   components: {
-    
-  },
+  MultiStepForm, // Add this line
+},
   data() {
     return {
       schemes: [
@@ -59,9 +53,12 @@ export default {
       ],
       selectedOption: null,
       pdfVisible: -1,
+      showMultiStepForm: false,
     };
   },
-
+  props: {
+    activeTab: String // Add the activeTab prop here
+  },
   methods: {
     openPDF(index) {
       this.pdfVisible = index;
@@ -69,6 +66,9 @@ export default {
     closePDF() {
       this.pdfVisible = -1;
     },
+    openMultiStepForm(scheme) {
+    this.$emit('apply-for-scheme', scheme); // Emit the event with the selected scheme
+  },
     printPDF() {
       const pdfFrame = document.querySelector('.pdf-frame');
       if (pdfFrame) {

@@ -4,57 +4,65 @@
         <!-- Form Steps / Progress Bar -->
 
         <!-- Step Wise Form Content -->
-        <form
-          id="userRegistrationForm"
-          name="userRegistrationForm"
-          enctype="multipart/form-data"
-          method="POST"
-          @submit.prevent="submitForm"
-        >
-          <!-- Step 1 Content -->
-          <section id="step-1" class="form-step" :class="{ 'd-none': currentStep !== 1 }">
-            <h1 class="text-center">Register New User</h1>
-            <div class="form-row">
-              <!-- Left side: User Information -->
-              <div class="form-group col-md-6">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" class="form-control" />
-              </div>
-              <div class="form-group col">
-                <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" />
-              </div>
-              <div class="form-group col">
-                <label for="password">Password</label>
-                <input type="password" id="password" class="form-control" />
-              </div>
-              <div class="form-group col">
-                <label for="mobile-number">Mobile Number</label>
-                <input type="tel" id="mobile-number" class="form-control" />
-              </div>
-              <div class="form-group col">
-                <label for="email">Email</label>
-                <input type="email" id="email" class="form-control" />
-              </div>
-              <div class="form-group col">
-                <label for="description">Description</label>
-                <textarea id="description" class="form-control"></textarea>
-              </div>
-            </div>
-  
-            <!-- Right side: Authority Checkboxes -->
+      <form
+        id="userRegistrationForm"
+        name="userRegistrationForm"
+        enctype="multipart/form-data"
+        method="POST"
+        @submit.prevent="submitForm"
+      >
+        <!-- Step 1 Content -->
+        <section id="step-1" class="form-step" :class="{ 'd-none': currentStep !== 1 }">
+          <h1 class="text-center">Register New User</h1>
+          <div class="form-row">
+            <!-- Left side: User Information -->
             <div class="form-group col-md-6">
-              <h2>Authority Names</h2>
-              <div v-for="authority in authorities" :key="authority.id" class="form-group">
-                <input
-                  type="checkbox"
-                  :id="`authority-${authority.id}`"
-                  :value="authority.name"
-                  class="form-check-input"
-                />
-                <label :for="`authority-${authority.id}`">{{ authority.name }}</label>
-              </div>
+              <label for="full-name">Full Name</label>
+              <input type="text" id="full-name" class="form-control" />
             </div>
+            <div class="form-group col">
+              <label for="username">Username</label>
+              <input type="text" id="username" class="form-control" />
+            </div>
+            <div class="form-group col">
+              <label for="password">Password</label>
+              <input type="password" id="password" class="form-control" />
+            </div>
+            <div class="form-group col">
+              <label for="mobile-number">Mobile Number</label>
+              <input type="tel" id="mobile-number" class="form-control" />
+            </div>
+            <div class="form-group col">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" />
+            </div>
+            <div class="form-group col">
+              <label for="aadhar-number">Aadhar Number</label>
+              <input type="text" id="aadhar-number" class="form-control" />
+            </div>
+            <div class="form-group col">
+              <label for="designation">Designation</label>
+              <input type="text" id="designation" class="form-control" />
+            </div>
+            <div class="form-group col">
+              <label for="department">Department</label>
+              <input type="text" id="department" class="form-control" />
+            </div>
+          </div>
+
+          <!-- Right side: Authority Checkboxes -->
+          <div class="form-group col-md-6">
+            <h2>Authority Names</h2>
+            <div v-for="authority in authorities" :key="authority.id" class="form-group">
+              <input
+                type="checkbox"
+                :id="`authority-${authority.id}`"
+                :value="authority.name"
+                class="form-check-input"
+              />
+              <label :for="`authority-${authority.id}`">{{ authority.name }}</label>
+            </div>
+          </div>
   
             <div class="button-container">
               <button class="button go-back-btn" @click="goBack">Go Back</button>
